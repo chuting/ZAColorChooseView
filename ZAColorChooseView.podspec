@@ -32,9 +32,9 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'ZAColorChooseView/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'ZAColorChooseView' => ['ZAColorChooseView/Assets/*.png']
-  # }
+  s.resource_bundles = {
+   'ZAColorChooseView' => ['ZAColorChooseView/Assets/image.bundle/*.png']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

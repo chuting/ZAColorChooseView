@@ -1,0 +1,6 @@
+framework module ZAColorChooseView {
+  umbrella header "ZAColorChooseView-umbrella.h"
+
+  export *
+  module * { export * }
+}
