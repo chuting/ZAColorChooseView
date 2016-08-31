@@ -9,14 +9,19 @@
     "file": "LICENSE"
   },
   "authors": {
-    "chuting": "chuting@zhuoapp.com"
+    "chuting": "502353919@qq.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/ZAColorChooseView.git",
+    "git": "https://github.com/chuting/ZAColorChooseView.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "ZAColorChooseView/Classes/**/*"
+  "source_files": "ZAColorChooseView/Classes/**/*",
+  "resource_bundles": {
+    "ZAColorChooseView": [
+      "ZAColorChooseView/Assets/image.bundle/*.png"
+    ]
+  }
 }
