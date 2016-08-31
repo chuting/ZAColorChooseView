@@ -22,7 +22,7 @@ pod "ZAColorChooseView"
 
 ## Author
 
-chuting, chuting@zhuoapp.com
+chuting, 502353919@qq.com
 
 ## License
 
