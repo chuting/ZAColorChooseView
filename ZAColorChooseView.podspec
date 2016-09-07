@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/ZAColorChooseView'
+  s.homepage         = 'https://github.com/chuting/ZAColorChooseView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'chuting' => '502353919@qq.com' }
@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'ZAColorChooseView/Classes/**/*'
   
   s.resource_bundles = {
-   'ZAColorChooseView' => ['ZAColorChooseView/Assets/image.bundle/*.png']
+   'ZAColorChooseView' => ['ZAColorChooseView/Resources/image.bundle']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
