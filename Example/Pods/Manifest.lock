@@ -17,19 +17,15 @@ DEPENDENCIES:
   - Expecta+Snapshots
   - FBSnapshotTestCase
   - Specta
-  - ZAColorChooseView (from `../`)
-
-EXTERNAL SOURCES:
-  ZAColorChooseView:
-    :path: ../
+  - ZAColorChooseView
 
 SPEC CHECKSUMS:
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Expecta+Snapshots: c343f410c7a6392f3e22e78f94c44b6c0749a516
   FBSnapshotTestCase: 918c55861356ee83aee7843d759f55a18ff6982b
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
-  ZAColorChooseView: 6e39042985f1fab486a23224fdfc19d7d78c3e23
+  ZAColorChooseView: bcd970a5fba5b6baa3d0fc822ae98c96c3ceb25c 
 
-PODFILE CHECKSUM: 2b23f04daab39aeeb3de64b7e012f358e796eb2e
+PODFILE CHECKSUM: 04dbbcbac1bc44aacce3106e283961c0856e4af8
 
 COCOAPODS: 1.0.1

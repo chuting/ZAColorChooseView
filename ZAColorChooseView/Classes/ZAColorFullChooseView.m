@@ -166,7 +166,7 @@
     
     BOOL firstDraw=NO;
     
-    UIColor *red=[UIColor redColor];
+//    UIColor *red=[UIColor redColor];
     
     
     NSMutableArray *contentArray=[[NSUserDefaults standardUserDefaults]objectForKey:@"draw"];

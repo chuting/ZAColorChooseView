@@ -27,13 +27,14 @@
 {
 
 
-//    if (pointImageName) {
-//        return [UIImage imageNamed:pointImageName];
-//    }
+    if (pointImage) {
+        return pointImage;
+    }
     
     NSString *bundlePath=[[NSBundle mainBundle]bundlePath];
-    NSString *path= [bundlePath stringByAppendingPathComponent:@"image.bundle/color_choose_point@2x.png"];
-    return [UIImage imageWithContentsOfFile:path];
+    NSString *path= [bundlePath stringByAppendingPathComponent:@"ZAColorChooseView.bundle/color_choose_point@2x.png"];
+    pointImage=[UIImage imageWithContentsOfFile:path];
+    return pointImage;
 
 }
 
