@@ -21,7 +21,7 @@
   "source_files": "ZAColorChooseView/Classes/**/*",
   "resource_bundles": {
     "ZAColorChooseView": [
-      "ZAColorChooseView/Assets/image.bundle/*.png"
+      "ZAColorChooseView/Resources/*.png"
     ]
   }
 }
