@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.source_files = 'ZAColorChooseView/Classes/**/*'
   
   s.resource_bundles = {
-   'ZAColorChooseView' => ['ZAColorChooseView/Resources/*.png']
+   'ZAColorChooseView' => ['ZAColorChooseView/Resources/image.bundle/*.png']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

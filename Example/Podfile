@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'ZAColorChooseView_Example' do
-  pod 'ZAColorChooseView' , ../
+  pod 'ZAColorChooseView', :path => '../'
 
   target 'ZAColorChooseView_Tests' do
     inherit! :search_paths
