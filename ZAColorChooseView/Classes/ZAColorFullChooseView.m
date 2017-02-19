@@ -10,115 +10,24 @@
 #define FullColorImagePath  SingleImagePath((currentColorArray.count))
 #define InnerShadowImagePath SingleImagePath((currentColorArray.count+1))
 
-
-
 @implementation ZAColorFullChooseView
-
-
 
 -(void)drawRect:(CGRect)rect
 {
-    
-    
-    
 }
 
 #pragma mark - 带渐变的色盘F
 -(instancetype)initGradientWithFrame:(CGRect)frame  colorArray:(NSArray *)colorArray
 {
-    
     self=[super initWithFrame:frame];
     if (!self) {
         return nil;
     }
-    
-    
     currentColorArray=colorArray;
-    
     radius=(CGRectGetWidth(frame)>CGRectGetHeight(frame)?CGRectGetHeight(frame):CGRectGetWidth(frame))/2;
-    
-    
     fanShapedCount=colorArray.count;
-    
     center=CGPointMake(CGRectGetWidth(frame)/2, CGRectGetHeight(frame)/2);
-    
     needScaleWhenChoose=YES;
-    
-//    CAShapeLayer *innerShadowLayer=[CAShapeLayer layer];
-//    
-//    //    BOOL firstDraw=![[NSUserDefaults standardUserDefaults]boolForKey:@"hasDraw"];
-//    BOOL firstDraw=NO;
-// 
-//    
-//    
-//    NSMutableArray *contentArray=[[NSUserDefaults standardUserDefaults]objectForKey:@"draw"];
-//    NSMutableArray *dataArray=[[NSMutableArray alloc]init];
-//    BOOL has=YES;
-//    for (UIColor *color in  colorArray) {
-//        NSData *data=[NSKeyedArchiver archivedDataWithRootObject:color];
-//        [dataArray addObject:data];
-//        if (!contentArray || ![contentArray containsObject:data]) {
-//            has=NO;
-//        }
-//    }
-//    
-//    if (!has) {
-//        [[NSUserDefaults standardUserDefaults]setValue:dataArray forKey:@"draw"];
-//        firstDraw=YES;
-//    }
-//    
-//    if (firstDraw) {
-//        //        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"hasDraw"];
-//        [[NSUserDefaults standardUserDefaults]synchronize];
-//        
-//       CAShapeLayer  innerShadowLayer=[CAShapeLayer layer];
-//        
-//        for (int i=0; i<colorArray.count+2; i++) {
-//            
-//            NSString *path=SingleImagePath(i);
-//            UIGraphicsBeginImageContextWithOptions(frame.size, NO, [[UIScreen mainScreen] scale]);
-//            if (i<colorArray.count) {
-//                float startAngle=[self fanSharpStartAngleWithTag :i];
-//                float endAngle=[self fanSharpEndAngleWithTag:i];
-//                
-//                CAShapeLayer *layer=[self addFanShapeLayerWithStartAngle:startAngle endAngle:endAngle radius:radius color:colorArray[i]];
-//                //添加渐变与外圈阴影
-//                [self addGradientToLayerWithStartAngle:startAngle endAngle:endAngle color:colorArray[i] layer:layer];
-//                //内径加阴影
-//                HSVType hsv=[self converColorToHSV:colorArray[i]];
-//                [self addShadowColorWithStartAngle:startAngle endAngle:endAngle innnerOrOut:YES layer:innerShadowLayer hsv:hsv positon:StartPosition];
-//                [self.layer addSublayer:layer];
-//                [layer renderInContext:UIGraphicsGetCurrentContext()];
-//            }else if (i==colorArray.count){
-//                [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-//            }else{
-//                [innerShadowLayer renderInContext:UIGraphicsGetCurrentContext()];
-//            }
-//            
-//            
-//            UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-//            UIGraphicsEndImageContext();
-//            NSData *data=UIImagePNGRepresentation(newImage);
-//            [data writeToFile:path atomically:YES];
-//        }
-//        
-//        
-//        NSArray *array=[[NSArray alloc]initWithArray:self.layer.sublayers];
-//        for (CAShapeLayer *layer in array  ) {
-//            if (layer) {
-//                [layer removeFromSuperlayer];
-//            }
-//        }
-//        
-//        
-//        NSArray *array1=[[NSArray alloc]initWithArray:innerShadowLayer.sublayers];
-//        for (CAShapeLayer *layer in array1  ) {
-//            if (layer) {
-//                [layer removeFromSuperlayer];
-//            }
-//        }
-//    }
-    
     [self drawPicWithFrame:frame colorArray:colorArray];
     
     for (int i=0; i<colorArray.count+1; i++) {
@@ -163,12 +72,7 @@
 
 -(void)drawPicWithFrame:(CGRect)frame  colorArray:(NSArray *)colorArray
 {
-    
     BOOL firstDraw=NO;
-    
-//    UIColor *red=[UIColor redColor];
-    
-    
     NSMutableArray *contentArray=[[NSUserDefaults standardUserDefaults]objectForKey:@"draw"];
     NSMutableArray *dataArray=[[NSMutableArray alloc]init];
     BOOL has=YES;
@@ -180,7 +84,6 @@
         }
     }
     
-    
     if (!has) {
         [[NSUserDefaults standardUserDefaults]setValue:dataArray forKey:@"draw"];
         firstDraw=YES;
@@ -191,9 +94,7 @@
     }
     
     [[NSUserDefaults standardUserDefaults]synchronize];
-    
     CAShapeLayer *innerShadowLayer=[CAShapeLayer layer];
-    
     for (int i=0; i<colorArray.count+2; i++) {
         
         NSString *path=SingleImagePath(i);
@@ -215,14 +116,11 @@
         }else{
             [innerShadowLayer renderInContext:UIGraphicsGetCurrentContext()];
         }
-        
-        
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         NSData *data=UIImagePNGRepresentation(newImage);
         [data writeToFile:path atomically:YES];
     }
-    
     
     NSArray *array=[[NSArray alloc]initWithArray:self.layer.sublayers];
     for (CAShapeLayer *layer in array  ) {
@@ -230,7 +128,6 @@
             [layer removeFromSuperlayer];
         }
     }
-    
     
     NSArray *array1=[[NSArray alloc]initWithArray:innerShadowLayer.sublayers];
     for (CAShapeLayer *layer in array1  ) {
@@ -246,7 +143,6 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        
         NSLog(@"%@",error.description);
     }else
     {

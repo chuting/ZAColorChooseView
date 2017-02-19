@@ -1,21 +1,16 @@
 PODS:
   - Expecta (1.0.5)
-  - Expecta+Snapshots (3.0.0):
+  - Expecta+Snapshots (3.0.1):
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
-  - FBSnapshotTestCase (2.1.2):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.2)
-  - FBSnapshotTestCase/Core (2.1.2)
-  - FBSnapshotTestCase/SwiftSupport (2.1.2):
-    - FBSnapshotTestCase/Core
-  - Specta (1.0.5)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - Specta (1.0.6)
   - ZAColorChooseView (0.1.0)
 
 DEPENDENCIES:
   - Expecta
   - Expecta+Snapshots
-  - FBSnapshotTestCase
   - Specta
   - ZAColorChooseView (from `../`)
 
@@ -25,11 +20,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
-  Expecta+Snapshots: c343f410c7a6392f3e22e78f94c44b6c0749a516
-  FBSnapshotTestCase: 918c55861356ee83aee7843d759f55a18ff6982b
-  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
-  ZAColorChooseView: 5c8c1464894e9ad1a6f076354843314563a54091
+  Expecta+Snapshots: aee0487f8bbb9df7e0b7735380565ac06207e959
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
+  ZAColorChooseView: 650b194f0d2c01a7d9153743f94ea8450c2120f6
 
-PODFILE CHECKSUM: e6d127832a6fe6e4481d1a24566a1b610654dcfe
+PODFILE CHECKSUM: 5c25d86a48097125ecfb26f0fa8d76df4c8f0a82
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

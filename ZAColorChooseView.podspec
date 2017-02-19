@@ -30,10 +30,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'ZAColorChooseView/Classes/**/*'
   
-  s.resource_bundles = {
-   'ZAColorChooseView' => ['ZAColorChooseView/Resources/image.bundle/*.png']
-  }
-
+  s.resources = ['ZAColorChooseView/Assets/image.xcassets']
+  
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'

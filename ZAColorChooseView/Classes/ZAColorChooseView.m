@@ -25,15 +25,12 @@
 
 -(UIImage *)pointImage
 {
-
-
     if (pointImage) {
         return pointImage;
     }
-    
-    NSString *bundlePath=[[NSBundle mainBundle]bundlePath];
-    NSString *path= [bundlePath stringByAppendingPathComponent:@"ZAColorChooseView.bundle/color_choose_point@2x.png"];
-    pointImage=[UIImage imageWithContentsOfFile:path];
+//    NSString *bundlePath=[[NSBundle mainBundle]bundlePath];
+//    NSString *path= [bundlePath stringByAppendingPathComponent:@"ZAColorChooseView.bundle/color_choose_point@2x.png"];
+    pointImage=[UIImage imageNamed:@"color_choose_point"];
     return pointImage;
 
 }
@@ -76,115 +73,60 @@
 #pragma mark - 添加触摸事件
 -(void)addTouchEvent
 {
-
-    
     UILongPressGestureRecognizer *longPressGestureRecognizer=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(pressGestureRecognizer:)];
     longPressGestureRecognizer.minimumPressDuration=0.0005;
     [self addGestureRecognizer:longPressGestureRecognizer];
-
-    
 }
 
 #pragma mark - 触摸事件处理
 -(void)pressGestureRecognizer:(UILongPressGestureRecognizer *)tap
 {
-
-    
-    
    CGPoint point= [tap locationInView:self ];
-  
-
     NSInteger tag=-1;
-    
- 
-    
     for (UIBezierPath *path in bezierPathArray) {
-        
-        
         if ([path containsPoint:point]) {
-            
-            
-           
             tag=[bezierPathArray indexOfObject:path];
-           
-            
             break;
         }
         
     }
-    
-    
-    if (tag==-1 || ((tag==-1)&&(tap.state==UIGestureRecognizerStateEnded))) {
- 
+    if(tag==-1 || ((tag==-1)&&(tap.state==UIGestureRecognizerStateEnded))) {
         NSLog(@"在区域外面停止触摸");
-        
         if (lastLayer&&(tap.state==UIGestureRecognizerStateEnded)) {
-            
             lastChooseTag=lastTag;
 //            [self animationStartWithLayer:lastLayer isEnd:YES];
-            
             [self getcolorWithPoint:CGPointZero];
             [self dealColorChangeWithIsTouchEnd:YES];
-            
-        
             [self animationStartWithLayer:lastLayer isEnd:YES  ];
-
-            
         }
-        
-        
         return;
         
     }
-    
-    
-    
-    
     CAShapeLayer *layer=layerArray[tag];
-    
-    
-//    NSLog(@"当前tag %zd-  上一个选中的tag--%zd- 上一个Tag--%zd",tag,lastChooseTag,lastTag);
-   
     //在选中的扇形区域上触摸获取详细的颜色
-    
     if (tag==lastChooseTag || CGAffineTransformEqualToTransform(layer.affineTransform, CGAffineTransformMakeScale(AnimateEndTransformScale, AnimateEndTransformScale)))
     {
- 
 //      NSLog(@"在选中的扇形区域上触摸微调颜色");
-        
         lastTag=tag;
         lastLayer=layer;
         lastChooseTag=tag;
-        
         [self getcolorWithPoint:point];
-        
-        
     }else{
-        
          lastChooseTag=-1;
-        
 //        lastChooseTag= tag;
-        
-          NSLog(@"取消选中");
-        
+        NSLog(@"取消选中");
         if (lastLayer ) {
             lastLayer.affineTransform=CGAffineTransformIdentity; 
             [lastLayer removeFromSuperlayer];
         }
-    
         //在非选中的区域上触摸，改变大的选中区域
 //        NSLog(@"在非选中的区域上触摸，改变大的颜色");
         lastLayer=layer;
         lastTag=tag;
-        
         [self getcolorWithPoint:CGPointZero];
         [self animationStartWithLayer:lastLayer isEnd:NO];
-    
     }
-    
-    
-//    NSLog(@"lastChooseTag------------%zd ----------lastTag--------- %zd   ",lastChooseTag,lastTag);
-    
+    //    NSLog(@"lastChooseTag------------%zd ----------lastTag--------- %zd   ",lastChooseTag,lastTag);
 //    lastChooseTag=lastTag;
     //处理颜色改变事件，
     [self dealColorChangeWithIsTouchEnd:NO];
@@ -195,7 +137,6 @@
 //             [self animationStartWithLayer:lastLayer isEnd:YES  ];
 
     }
-    
 }
 
 #pragma mark - 动画效果
@@ -207,39 +148,22 @@
  */
 -(void)animationStartWithLayer:(CAShapeLayer *)layer  isEnd:(BOOL)isEnd
 {
-    
-   
-  
     float  angle=[self fanSharpStartAngleWithTag:(int)lastTag]+[self singleAngle]/2+M_PI/2.0;
- 
     float scale=isEnd? (needScaleWhenChoose?AnimateEndTransformScale:1):AnimateTransformScale;
-
     [UIView animateWithDuration:0.1 animations:^{
-        
          self.userInteractionEnabled=NO;
         layer.affineTransform=CGAffineTransformMakeScale(scale,scale);
         layer.position=center;
-        
         [self.layer addSublayer:layer];
- 
         [self.layer insertSublayer:layer below:pointLayer];
-      
         pointLayer.affineTransform=CGAffineTransformMakeRotation(angle);
-    
-        
     }completion:^(BOOL finished) {
-        
-        
         self.userInteractionEnabled=YES;
-        
 //        if (scale==1) {
 //            
 //            [layer removeFromSuperlayer];
 //        }
-    }];
-    
-    
-   
+    }];   
 }
 
 #pragma mark - 添加内阴影
@@ -249,7 +173,6 @@
 -(void)addInnerShadowLayerWithImagePath:(NSString *)innerShadowImagePath
 {
     UIImage *image=[UIImage imageWithContentsOfFile:innerShadowImagePath];
-    
     CAShapeLayer *innerShadowLayer=[CAShapeLayer layer];
     innerShadowLayer.frame=CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     innerShadowLayer.contents=(__bridge id _Nullable)(image.CGImage);
@@ -268,7 +191,6 @@
     pointLayer.position=center;
     pointLayer.contents=(id)self.pointImage.CGImage;
     [self.layer addSublayer:pointLayer];
-    
 }
 
 
@@ -277,34 +199,22 @@
 {
 
     UIBezierPath *path=[self sharpPathWithStartAngle:startAngle endAngle:endAngle radius:radius1];
-    
     //大的扇形Layer
     CAShapeLayer *layer=[CAShapeLayer layer];
     layer.frame=CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     layer.path=path.CGPath;
     layer.fillColor=color.CGColor;
     layer.strokeColor=color.CGColor;
-//    [self.layer addSublayer:layer];
-    
-    
+//    [self.layer addSublayer:layer];    
     if (!bezierPathArray) {
-        
         bezierPathArray=[[NSMutableArray alloc]init];
-        
     }
-    [bezierPathArray addObject:path];
-    
-    
+    [bezierPathArray addObject:path];    
     if (!layerArray) {
-        
         layerArray=[[NSMutableArray alloc]init];
-        
     }
-    [layerArray addObject:layer];
-    
-    
+    [layerArray addObject:layer];    
     return layer;
-    
 
 }
 
@@ -312,43 +222,24 @@
 
 #pragma mark - 在单个扇形上面加渐变
 -(void)addGradientToLayerWithStartAngle:(float)startAngle endAngle:(float)endAngle  color:(UIColor *)color  layer:(CAShapeLayer *)layer{
-
-    
-    
 //    const CGFloat *components = CGColorGetComponents(color.CGColor);
-//    HSVType hsv= RGB_to_HSV(RGBTypeMake(components[0], components[1], components[2]));
-    
-    
+//    HSVType hsv= RGB_to_HSV(RGBTypeMake(components[0], components[1], components[2]));    
     float gap=1;
-    int postion=radius*FullPosition;
-    
-    
-    
-    HSVType hsv=[self converColorToHSV:color];
-    
-    
+    int postion=radius*FullPosition;    
+    HSVType hsv=[self converColorToHSV:color];    
     int  min= (AnimateEndTransformScale-1)*radius+1;
     for (int i=StartPosition-min; i<postion; i+=gap) {
- 
         //画单个弧形实现渐变
- 
         HSVType hsv1=[self dealColorWithDistance:i color:color];
         gap=(hsv1.s>hsv.s?(postion-i):gap);
-        
         CAShapeLayer *layer1=[self addSingleRadiusWithCenter:center innerRadius:i width:gap start:startAngle end:endAngle hsv:hsv1];
         [layer addSublayer:layer1];
 
     }
-    
-
- 
      //内径加阴影
 //    [self addShadowColorWithStartAngle:startAngle endAngle:endAngle innnerOrOut:YES layer:layer hsv:hsv positon:StartPosition];
     ///画外径阴影
      [self addShadowColorWithStartAngle:startAngle endAngle:endAngle innnerOrOut:NO layer:layer hsv:hsv positon:postion];
-    
- 
-
     //    //给layer加描边
     CAShapeLayer *layer1=[CAShapeLayer layer];
     layer1.path=layer.path;
@@ -358,47 +249,29 @@
     layer1.fillColor=[UIColor clearColor].CGColor;
     [layer addSublayer:layer1];
     //
- 
-
 }
 
 
 -(void)addShadowColorWithStartAngle:(float)startAngle endAngle:(float)endAngle  innnerOrOut:(BOOL)innnerOrOut  layer:(CAShapeLayer *)layer  hsv:(HSVType)hsv positon:(float)postion
-{
-    
-    
+{    
     if (innnerOrOut) {
-        
-        
         for (int i=postion; i<postion+InnerShadowRadius; i+=1) {
-            
             //内径加阴影
-            
             HSVType hsv1= HSVTypeMake(  hsv.h-0.01*(InnerShadowRadius -(i-StartPosition)),  (hsv.s-0.25)/(radius*FullPosition-StartPosition)*(i-StartPosition)+0.25, hsv.v);
             CAShapeLayer *layer1= [self addSingleRadiusWithCenter:center innerRadius:i width:0.5 start:startAngle end:endAngle hsv:hsv1];
             [layer addSublayer:layer1];
             layer1.opacity=0.5;
-
-            
-            
         }
 
     }else{
-    
-        
         for (float i=postion; i<radius-3; i+=0.5) {
-            
             ///画外径阴影
             HSVType hsv1= HSVTypeMake(hsv.h-0.0025*(i-postion),hsv.s, hsv.v);
             CAShapeLayer *layer1=[self addSingleRadiusWithCenter:center innerRadius:i width:0.5  start:startAngle end:endAngle hsv:hsv1];
             [layer addSublayer:layer1];
         }
         
-    }
-    
-    
-    
-    
+    }        
 }
 
 #pragma mark  添加渐变的弧线
@@ -417,29 +290,18 @@
 -(CAShapeLayer *)addSingleRadiusWithCenter:(CGPoint)currentCenter innerRadius:(float)innerRadius width:(float)width  start:(float)startRadius end:(float)endRadius hsv:(HSVType)hsv
 {
 
-    
     float outRadius=innerRadius+width;
-    
     UIBezierPath *path1=[UIBezierPath bezierPath];
     [path1 addArcWithCenter:currentCenter radius:outRadius  startAngle:startRadius endAngle:endRadius clockwise:YES];
     [path1 addLineToPoint:CGPointMake((currentCenter.x+cos(endRadius)*innerRadius), currentCenter.x+sin(endRadius)*(innerRadius))];
     [path1 addArcWithCenter:currentCenter radius:innerRadius startAngle:endRadius endAngle:startRadius clockwise:NO];
     [path1 addLineToPoint:CGPointMake(cos(startRadius)*outRadius+currentCenter.x,  sin(startRadius)*outRadius+currentCenter.x)];
-    [path1 closePath];
-    
-    
+    [path1 closePath];    
     CAShapeLayer *layer1=[CAShapeLayer layer];
     layer1.path=path1.CGPath;
-    
- 
     layer1.fillColor=[UIColor colorWithHue:hsv.h  saturation:hsv.s  brightness:hsv.v  alpha:1].CGColor;
     layer1.strokeColor=[UIColor colorWithHue:hsv.h  saturation:hsv.s  brightness:hsv.v  alpha:1].CGColor;
-
- 
-  
-    
     return layer1;
-    
 }
 
 
@@ -451,29 +313,19 @@
  */
 -(void)getcolorWithPoint:(CGPoint)point
 {
-
     if (lastTag<currentColorArray.count) {
-        
-        
         UIColor *color=currentColorArray[lastTag];
         currentColor=color;
     }
- 
-    
    
     if (CGPointEqualToPoint(point,CGPointZero)) {
-        
         return;
-        
     }
-    
     float r=(point.x - center.x)*(point.x - center.x) + (point.y - center.y)*(point.y - center.y);
     r =sqrt(r)/AnimateEndTransformScale;
-    
   
     HSVType newHsv=[self dealColorWithDistance:r color:currentColor];
     currentColor=[UIColor colorWithHue:newHsv.h saturation:newHsv.s brightness:newHsv.v alpha:1];
-  
 }
 
 
@@ -489,19 +341,11 @@
  */
 -(HSVType)dealColorWithDistance:(float)r  color:(UIColor *)color
 {
-
-    
     const CGFloat *components = CGColorGetComponents(color.CGColor);
-    
     HSVType hsv= RGB_to_HSV(RGBTypeMake(components[0], components[1], components[2]));
-    
     HSVType newHsv= HSVTypeMake(hsv.h,(hsv.s-0.25)/(radius*FullPosition-StartPosition)*(r-StartPosition)+0.25, hsv.v);
-    
-    newHsv.s=(newHsv.s>hsv.s?hsv.s:newHsv.s);
-    
-    
+    newHsv.s=(newHsv.s>hsv.s?hsv.s:newHsv.s);    
     return newHsv;
-
 }
 
 
@@ -513,72 +357,44 @@
  */
 -(void)dealColorChangeWithIsTouchEnd:(BOOL)touchEnd
 {
-
     if (touchEnd) {
-        
        if (delegate && [delegate respondsToSelector:@selector(colorChangeStopWithColor:colorChooseView:)]) {
-        
             [delegate colorChangeStopWithColor:currentColor colorChooseView:self];
-           
        }
-        
     }else{
-        
-        
         if (delegate && [delegate respondsToSelector:@selector(colorChangeWithColor:colorChooseView:)]) {
-        
             [delegate colorChangeWithColor:currentColor colorChooseView:self];
-            
         }
-        
-    
     }
-    
-  
 }
 
 
 -(HSVType)converColorToHSV:(UIColor *)color
 {
-    
     const CGFloat *components = CGColorGetComponents(color.CGColor);
     HSVType hsv= RGB_to_HSV(RGBTypeMake(components[0], components[1], components[2]));
-
-    
     return hsv;
- 
 }
 
 
 -(void)setSelectTag:(int)tag
 {
-
     if (lastChooseTag==lastTag) {
         return;
     }
-    
     lastChooseTag=tag;
     currentColor=currentColorArray[tag];
-    
     NSLog(@" 当前 %zd  选中的 %zd",lastTag,lastChooseTag);
-    
     NSInteger count=0;
     NSInteger start= lastTag+1;
-    
     NSInteger end=(lastTag<lastChooseTag?lastChooseTag+1:((currentColorArray.count-lastTag)+lastTag+lastChooseTag+1));
-    
     for (NSInteger i=start; i<end; i++) {
-        
-        
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05*count * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
             if (lastLayer) {
                 [UIView animateWithDuration:0.12 animations:^{
                     lastLayer.affineTransform=CGAffineTransformIdentity;
                 }];
             }
-            
             NSInteger tag=i;
             if ( i>(currentColorArray.count-1)) {
                 tag=i-currentColorArray.count;
@@ -589,50 +405,29 @@
             lastLayer=layer;
             
         });
-        
-        
         count++;
-        
-        
     }
-
-    
-    
 }
 
 
 -(void)startCloseAnimate
 {
-    
     for (CAShapeLayer *layer1 in layerArray) {
         [UIView animateWithDuration:0.12 animations:^{
             layer1.affineTransform=CGAffineTransformIdentity;
         }completion:^(BOOL finished) {
         }];
-    }
-    
-    
-    
-    
+    }        
 }
 
 
 -(void)setColor:(UIColor *)color
 {
-
-
     currentColor=color;
-    
     HSVType  colorHsv=[self converColorToHSV:color];
-    
     BOOL has=NO;
-    
     for (UIColor *color1 in currentColorArray) {
-        
-        
-    
         HSVType hsv=[self converColorToHSV:color1];
-        
         if (fabs(hsv.h-colorHsv.h)<0.01) { 
             has=YES;
             lastChooseTag=[currentColorArray indexOfObject:color1];
@@ -643,102 +438,53 @@
         
     }
     if (!has) {
-        
-//        lastChooseTag=lastTag+1;
         [self startCloseAnimate];
         lastChooseTag=-1;
         lastTag=-1;
-        
         return;
-        
-        
     }
+    
     if (lastChooseTag==lastTag) {
         return;
     }
-    
 
-    
     NSInteger start= lastTag+1;
-    
     NSInteger end=(lastTag<lastChooseTag?lastChooseTag+1:((currentColorArray.count-lastTag)+lastTag+lastChooseTag+1));
    
-    
     if (!has) {
-        
         lastChooseTag=-1;
-   
     }
-    
     NSInteger count=0;
   
-    
     for (NSInteger i=start; i<end; i++) {
-        
-        
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05*count * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            
             if (lastLayer) {
-                
                 [UIView animateWithDuration:0.12 animations:^{
-                    
                     lastLayer.affineTransform=CGAffineTransformIdentity;
                 }completion:^(BOOL finished) {
-                    
-                    
 //                      [lastLayer removeFromSuperlayer];
                 }];
             }
-            
-            
-            
             NSInteger tag=i;
-            
-            
             if ( i>(currentColorArray.count-1)) {
-                
                 tag=i-currentColorArray.count;
             }
-            
-            
-            
             CAShapeLayer *layer=[layerArray objectAtIndex:tag];
             lastTag=tag;
-            
-            
             [self animationStartWithLayer:layer isEnd:tag==lastChooseTag ];
            
             lastLayer=layer;
-            
-            
             if (!has && i==end-1) {
-                
- 
                 [UIView animateWithDuration:0.12 animations:^{
-                    
                     lastLayer.affineTransform=CGAffineTransformIdentity;
-                
                 }completion:^(BOOL finished) {
                     
                     
                 }];
-                
-                
-                
-                
             }
-            
-        
         });
-        
-        
         count++;
-        
-        
     }
-
 }
 
 
@@ -758,34 +504,24 @@
 -(void)startOpeningAnimate
 {
 
-    
 
 
 }
 
 
 -(float)singleAngle
-{
-    
-    
+{    
     float gapRadius=0;
-    
     return ((2*M_PI-gapRadius*fanShapedCount)/fanShapedCount);
-    
 }
 
 -(float)fanSharpStartAngleWithTag:(int)tag
 {
-    
     return  tag*[self singleAngle];
 }
 
-
-
-
 -(float)fanSharpEndAngleWithTag:(int)tag
 {
-    
     return  (tag+1)*[self singleAngle];
 }
 

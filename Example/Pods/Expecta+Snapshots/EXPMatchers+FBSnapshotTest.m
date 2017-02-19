@@ -25,7 +25,8 @@
     snapshotController.recordMode = record;
     snapshotController.referenceImagesDirectory = referenceDirectory;
     snapshotController.usesDrawViewHierarchyInRect = [Expecta usesDrawViewHierarchyInRect];
-
+    snapshotController.deviceAgnostic = [Expecta isDeviceAgnostic];
+  
     if (! snapshotController.referenceImagesDirectory) {
         [NSException raise:@"Missing value for referenceImagesDirectory" format:@"Call [[EXPExpectFBSnapshotTest instance] setReferenceImagesDirectory"];
     }
@@ -79,18 +80,36 @@ void setGlobalReferenceImageDir(char *reference) {
     NSString *testFileName = [NSString stringWithCString:self.fileName encoding:NSUTF8StringEncoding];
     NSArray *pathComponents = [testFileName pathComponents];
 
-    for (NSString *folder in pathComponents) {
+    NSString *firstFolderFound = nil;
+
+    for (NSString *folder in pathComponents.reverseObjectEnumerator) {
         if ([folder.lowercaseString rangeOfString:@"tests"].location != NSNotFound) {
-
             NSArray *folderPathComponents = [pathComponents subarrayWithRange:NSMakeRange(0, [pathComponents indexOfObject:folder] + 1)];
-            return [NSString stringWithFormat:@"%@/ReferenceImages", [folderPathComponents componentsJoinedByString:@"/"]];
+            NSString *referenceImagesPath = [NSString stringWithFormat:@"%@/ReferenceImages", [folderPathComponents componentsJoinedByString:@"/"]];
 
+            if (!firstFolderFound) {
+                firstFolderFound = referenceImagesPath;
+            }
+
+            BOOL isDirectory = NO;
+            BOOL referenceDirExists = [[NSFileManager defaultManager] fileExistsAtPath:referenceImagesPath isDirectory:&isDirectory];
+
+            // if the folder exists, this is the reference dir for sure
+            if (referenceDirExists && isDirectory) {
+                return referenceImagesPath;
+            }
         }
+    }
+
+    // if a reference folder wasn't found, we should create one
+    if (firstFolderFound) {
+        return firstFolderFound;
     }
 
     [NSException raise:@"Could not infer reference image folder" format:@"You should provide a reference dir using setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);"];
     return nil;
 }
+
 @end
 
 
@@ -118,7 +137,7 @@ EXPMatcherImplementationBegin(haveValidSnapshot, (void)){
     __block NSError *error = nil;
 
     prerequisite(^BOOL{
-        return actual;
+        return actual != nil;
     });
 
 
@@ -155,12 +174,11 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
     BOOL actualIsViewLayerOrViewController = ([actual isKindOfClass:UIView.class] || [actual isKindOfClass:CALayer.class] || [actual isKindOfClass:UIViewController.class]);
 
     prerequisite(^BOOL{
-        return actual && actualIsViewLayerOrViewController;
+        return actual != nil && actualIsViewLayerOrViewController;
     });
 
     match(^BOOL{
         NSString *referenceImageDir = [self _getDefaultReferenceDirectory];
-
         // For view controllers do the viewWill/viewDid dance, then pass view through
         if ([actual isKindOfClass:UIViewController.class]) {
 
@@ -203,7 +221,7 @@ EXPMatcherImplementationBegin(haveValidSnapshotNamed, (NSString *snapshot)){
     __block NSError *error = nil;
 
     prerequisite(^BOOL{
-        return actual && !(snapshotIsNil);
+        return actual != nil && !(snapshotIsNil);
     });
 
     match(^BOOL{
@@ -239,12 +257,11 @@ EXPMatcherImplementationBegin(recordSnapshotNamed, (NSString *snapshot)) {
     id actualRef = actual;
 
     prerequisite(^BOOL{
-        return actualRef && snapshotExists && actualIsViewLayerOrViewController;
+        return actualRef != nil && snapshotExists && actualIsViewLayerOrViewController;
     });
 
     match(^BOOL{
         NSString *referenceImageDir = [self _getDefaultReferenceDirectory];
-
         // For view controllers do the viewWill/viewDid dance, then pass view through
         if ([actual isKindOfClass:UIViewController.class]) {
             [actual beginAppearanceTransition:YES animated:NO];

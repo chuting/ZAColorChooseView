@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EFB8AB9B32831AABF3A4A35 /* Pods_ZAColorChooseView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4C696CB7E2B585A684B6EB /* Pods_ZAColorChooseView_Tests.framework */; };
+		05B086878F8D0900F446BCAE /* libPods-ZAColorChooseView_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0426EFB76B77086F6224B76E /* libPods-ZAColorChooseView_Tests.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -22,8 +22,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		730010B41D7FAA3900743DD0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730010B31D7FAA3900743DD0 /* Launch Screen.storyboard */; };
+		8369B14D88888C801099F2FB /* libPods-ZAColorChooseView_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4320B2DA86B499A3E66DDA /* libPods-ZAColorChooseView_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		C6F361092AD344388501626D /* Pods_ZAColorChooseView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08533ACA0EABB1D0727315E5 /* Pods_ZAColorChooseView_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		00D3F68E637C3B0ECDB2C3B0 /* ZAColorChooseView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZAColorChooseView.podspec; path = ../ZAColorChooseView.podspec; sourceTree = "<group>"; };
-		08533ACA0EABB1D0727315E5 /* Pods_ZAColorChooseView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAColorChooseView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0426EFB76B77086F6224B76E /* libPods-ZAColorChooseView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZAColorChooseView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF03817F139E493E250E143 /* Pods-ZAColorChooseView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAColorChooseView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAColorChooseView_Tests/Pods-ZAColorChooseView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4614F0083054FDC1813B53EC /* Pods-ZAColorChooseView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAColorChooseView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAColorChooseView_Tests/Pods-ZAColorChooseView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ZAColorChooseView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZAColorChooseView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +63,7 @@
 		730010B31D7FAA3900743DD0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7769E7D218F727E81032E4FD /* Pods-ZAColorChooseView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAColorChooseView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		DC4C696CB7E2B585A684B6EB /* Pods_ZAColorChooseView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAColorChooseView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4320B2DA86B499A3E66DDA /* libPods-ZAColorChooseView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZAColorChooseView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF1A556B58B30F0EACAC553 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E49DFA38CF4516FDC3071C39 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F0EC1000533B0928BE1585C1 /* Pods-ZAColorChooseView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAColorChooseView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				C6F361092AD344388501626D /* Pods_ZAColorChooseView_Example.framework in Frameworks */,
+				8369B14D88888C801099F2FB /* libPods-ZAColorChooseView_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				0EFB8AB9B32831AABF3A4A35 /* Pods_ZAColorChooseView_Tests.framework in Frameworks */,
+				05B086878F8D0900F446BCAE /* libPods-ZAColorChooseView_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				08533ACA0EABB1D0727315E5 /* Pods_ZAColorChooseView_Example.framework */,
-				DC4C696CB7E2B585A684B6EB /* Pods_ZAColorChooseView_Tests.framework */,
+				AC4320B2DA86B499A3E66DDA /* libPods-ZAColorChooseView_Example.a */,
+				0426EFB76B77086F6224B76E /* libPods-ZAColorChooseView_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,12 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "ZAColorChooseView_Example" */;
 			buildPhases = (
-				6CC096BB9E8A1CC56BAF0A74 /* [CP] Check Pods Manifest.lock */,
+				F072911DC2DF762D0B8D9B2B /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				F59B7CBE3F9F24A4D63D2F8B /* [CP] Embed Pods Frameworks */,
-				644F2360BCBC0104DA9DACBE /* [CP] Copy Pods Resources */,
+				3C9848FA469C7E00343C7475 /* [CP] Embed Pods Frameworks */,
+				1F9A57C86F60D9034F6B25D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,6 +297,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1F9A57C86F60D9034F6B25D0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C9848FA469C7E00343C7475 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F3CC0DD7CED8D045B36E5EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,36 +342,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Tests/Pods-ZAColorChooseView_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		644F2360BCBC0104DA9DACBE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6CC096BB9E8A1CC56BAF0A74 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		92C64CE971A7B27CB10B1006 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B27AC26D2711E4DEF8E60C10 /* [CP] Copy Pods Resources */ = {
@@ -372,19 +372,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Tests/Pods-ZAColorChooseView_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F59B7CBE3F9F24A4D63D2F8B /* [CP] Embed Pods Frameworks */ = {
+		F072911DC2DF762D0B8D9B2B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZAColorChooseView_Example/Pods-ZAColorChooseView_Example-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
