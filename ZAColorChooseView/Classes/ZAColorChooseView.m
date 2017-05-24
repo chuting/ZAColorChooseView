@@ -21,6 +21,7 @@
 @synthesize delegate;
 @synthesize lastChooseTag;
 @synthesize pointImage ;
+//@synthesize currentColor;
 
 
 -(UIImage *)pointImage
@@ -91,7 +92,7 @@
         
     }
     if(tag==-1 || ((tag==-1)&&(tap.state==UIGestureRecognizerStateEnded))) {
-        NSLog(@"在区域外面停止触摸");
+//        NSLog(@"在区域外面停止触摸");
         if (lastLayer&&(tap.state==UIGestureRecognizerStateEnded)) {
             lastChooseTag=lastTag;
 //            [self animationStartWithLayer:lastLayer isEnd:YES];
@@ -114,7 +115,7 @@
     }else{
          lastChooseTag=-1;
 //        lastChooseTag= tag;
-        NSLog(@"取消选中");
+//        NSLog(@"取消选中");
         if (lastLayer ) {
             lastLayer.affineTransform=CGAffineTransformIdentity; 
             [lastLayer removeFromSuperlayer];
@@ -126,15 +127,12 @@
         [self getcolorWithPoint:CGPointZero];
         [self animationStartWithLayer:lastLayer isEnd:NO];
     }
-    //    NSLog(@"lastChooseTag------------%zd ----------lastTag--------- %zd   ",lastChooseTag,lastTag);
-//    lastChooseTag=lastTag;
     //处理颜色改变事件，
     [self dealColorChangeWithIsTouchEnd:NO];
     if (tap.state==UIGestureRecognizerStateEnded) { 
         lastChooseTag=tag;
         [self animationStartWithLayer:layer isEnd:YES];
-        [self dealColorChangeWithIsTouchEnd:YES];
-//             [self animationStartWithLayer:lastLayer isEnd:YES  ];
+        [self dealColorChangeWithIsTouchEnd:YES]; 
 
     }
 }
@@ -236,8 +234,6 @@
         [layer addSublayer:layer1];
 
     }
-     //内径加阴影
-//    [self addShadowColorWithStartAngle:startAngle endAngle:endAngle innnerOrOut:YES layer:layer hsv:hsv positon:StartPosition];
     ///画外径阴影
      [self addShadowColorWithStartAngle:startAngle endAngle:endAngle innnerOrOut:NO layer:layer hsv:hsv positon:postion];
     //    //给layer加描边
@@ -313,6 +309,7 @@
  */
 -(void)getcolorWithPoint:(CGPoint)point
 {
+    
     if (lastTag<currentColorArray.count) {
         UIColor *color=currentColorArray[lastTag];
         currentColor=color;
@@ -325,7 +322,9 @@
     r =sqrt(r)/AnimateEndTransformScale;
   
     HSVType newHsv=[self dealColorWithDistance:r color:currentColor];
-    currentColor=[UIColor colorWithHue:newHsv.h saturation:newHsv.s brightness:newHsv.v alpha:1];
+    UIColor *color =[UIColor colorWithHue:newHsv.h saturation:newHsv.s brightness:newHsv.v alpha:1];
+    
+    currentColor = color;
 }
 
 
@@ -357,6 +356,7 @@
  */
 -(void)dealColorChangeWithIsTouchEnd:(BOOL)touchEnd
 {
+ 
     if (touchEnd) {
        if (delegate && [delegate respondsToSelector:@selector(colorChangeStopWithColor:colorChooseView:)]) {
             [delegate colorChangeStopWithColor:currentColor colorChooseView:self];
@@ -384,7 +384,7 @@
     }
     lastChooseTag=tag;
     currentColor=currentColorArray[tag];
-    NSLog(@" 当前 %zd  选中的 %zd",lastTag,lastChooseTag);
+//    NSLog(@" 当前 %zd  选中的 %zd",lastTag,lastChooseTag);
     NSInteger count=0;
     NSInteger start= lastTag+1;
     NSInteger end=(lastTag<lastChooseTag?lastChooseTag+1:((currentColorArray.count-lastTag)+lastTag+lastChooseTag+1));
@@ -431,8 +431,7 @@
         if (fabs(hsv.h-colorHsv.h)<0.01) { 
             has=YES;
             lastChooseTag=[currentColorArray indexOfObject:color1];
-            currentColor=color1;
-            NSLog(@" 当前 %zd  选中的 %zd",lastTag,lastChooseTag);
+            currentColor=color1; 
             break;
         }
         
@@ -488,26 +487,10 @@
 }
 
 
--(void)setNeedsDisplay
+-(UIColor *)getColor
 {
-
-//    NSLog(@"%s",__func__);
+    return currentColor;
 }
-
--(void)layoutSubviews
-{
-   
-//    NSLog(@"layoutSubviews");
- 
-}
-
--(void)startOpeningAnimate
-{
-
-
-
-}
-
 
 -(float)singleAngle
 {    

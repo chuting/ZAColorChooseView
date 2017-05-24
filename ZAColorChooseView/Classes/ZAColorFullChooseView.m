@@ -12,10 +12,7 @@
 
 @implementation ZAColorFullChooseView
 
--(void)drawRect:(CGRect)rect
-{
-}
-
+ 
 #pragma mark - 带渐变的色盘F
 -(instancetype)initGradientWithFrame:(CGRect)frame  colorArray:(NSArray *)colorArray
 {

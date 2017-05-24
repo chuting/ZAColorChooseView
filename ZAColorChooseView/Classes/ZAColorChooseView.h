@@ -83,9 +83,10 @@
     
 }
 
-@property (nonatomic) UIImage *pointImage;
-@property (nonatomic) id <ColorChangeDelegate> delegate;
-@property (nonatomic) NSInteger lastChooseTag;
+@property (nonatomic,weak) UIImage *pointImage;
+@property (nonatomic,weak) id <ColorChangeDelegate> delegate;
+@property (nonatomic,assign) NSInteger lastChooseTag;
+@property (nonatomic,weak,getter=getColor) UIColor *color;
 
 #pragma mark -  不带渐变的色盘，
 /**
@@ -108,11 +109,6 @@
  */
 -(void)setColor:(UIColor *)color;
 
-#pragma mark - 开场动画
-/**
- *  开场动画
- */
--(void)startOpeningAnimate;
 
 
 

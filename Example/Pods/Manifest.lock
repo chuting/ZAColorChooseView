@@ -6,7 +6,7 @@ PODS:
     - Specta (~> 1.0)
   - FBSnapshotTestCase/Core (2.1.4)
   - Specta (1.0.6)
-  - ZAColorChooseView (0.1.0)
+  - ZAColorChooseView (1.0.2)
 
 DEPENDENCIES:
   - Expecta
@@ -23,7 +23,7 @@ SPEC CHECKSUMS:
   Expecta+Snapshots: aee0487f8bbb9df7e0b7735380565ac06207e959
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
-  ZAColorChooseView: 650b194f0d2c01a7d9153743f94ea8450c2120f6
+  ZAColorChooseView: 2762ac3e0f22e453539d4f435a8ef9496a38d30e
 
 PODFILE CHECKSUM: 5c25d86a48097125ecfb26f0fa8d76df4c8f0a82
 
