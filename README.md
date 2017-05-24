@@ -5,6 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/ZAColorChooseView.svg?style=flat)](http://cocoapods.org/pods/ZAColorChooseView)
 [![Platform](https://img.shields.io/cocoapods/p/ZAColorChooseView.svg?style=flat)](http://cocoapods.org/pods/ZAColorChooseView)
 
+ ![image](https://github.com/chuting/ZAColorChooseView/blob/master/颜色选择器.png)
+  ![image](https://github.com/chuting/ZAColorChooseView/blob/master/QQ20170524-214555-HD.gif)
+ 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
