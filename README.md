@@ -6,7 +6,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/ZAColorChooseView.svg?style=flat)](http://cocoapods.org/pods/ZAColorChooseView)
 
  ![image](https://github.com/chuting/ZAColorChooseView/blob/master/颜色选择器.png)
-  ![image](https://github.com/chuting/ZAColorChooseView/blob/master/QQ20170524-214555-HD.gif)
+ 
+ ![image](https://github.com/chuting/ZAColorChooseView/blob/master/QQ20170524-214555-HD.gif)
  
 ## Example
 
